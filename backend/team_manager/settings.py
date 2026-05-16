@@ -33,6 +33,10 @@ CSRF_TRUSTED_ORIGINS = [
 if RAILWAY_DOMAIN:
     CSRF_TRUSTED_ORIGINS.append(f'https://{RAILWAY_DOMAIN}')
 
+RAILWAY_STATIC_URL = os.environ.get('RAILWAY_STATIC_URL')
+if RAILWAY_STATIC_URL:
+    CSRF_TRUSTED_ORIGINS.append(RAILWAY_STATIC_URL.rstrip('/'))
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
