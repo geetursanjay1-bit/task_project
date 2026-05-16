@@ -1,8 +1,11 @@
+[variables]
+NIXPACKS_PYTHON_VERSION = "3.13"
+
 [phases.setup]
 nixPkgs = ["python313", "gcc"]
 
 [phases.install]
-cmds = ["pip install -r backend/requirements.txt"]
+cmds = ["python -m pip install -r requirements.txt"]
 
 [phases.build]
 cmds = ["cd backend && python manage.py collectstatic --noinput"]
