@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Team Task Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+    <div class="container-fluid dashboard-container my-0 py-0">
+        <a class="navbar-brand text-gradient fw-bold" href="dashboard.html">Team Task Manager</a>
+        <div class="d-flex gap-3">
+            <a href="create-project.html" class="btn btn-outline-light btn-sm">New Project</a>
+            <a href="create-task.html" class="btn btn-primary btn-sm">New Task</a>
+            <button class="btn btn-danger btn-sm" onclick="logout()">Logout</button>
+        </div>
+    </div>
+</nav>
+
+<div class="dashboard-container mt-0">
+    <div class="row mb-5" id="dashboard-stats" style="display: none;">
+        <div class="col-12">
+            <h3 class="mb-4">Dashboard Statistics</h3>
+            <div class="row g-4">
+                <div class="col-md-2">
+                    <div class="card-box bg-primary bg-opacity-10 text-center px-1">
+                        <h4 class="fw-bold" id="stat-total-tasks">0</h4>
+                        <p class="text-secondary mb-0 small">Total</p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card-box bg-warning bg-opacity-10 text-center px-1">
+                        <h4 class="fw-bold" id="stat-todo-tasks">0</h4>
+                        <p class="text-secondary mb-0 small">To Do</p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card-box bg-info bg-opacity-10 text-center px-1">
+                        <h4 class="fw-bold" id="stat-inprogress-tasks">0</h4>
+                        <p class="text-secondary mb-0 small">In Progress</p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card-box bg-success bg-opacity-10 text-center px-1">
+                        <h4 class="fw-bold" id="stat-done-tasks">0</h4>
+                        <p class="text-secondary mb-0 small">Done</p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card-box bg-danger bg-opacity-10 text-center px-1">
+                        <h4 class="fw-bold" id="stat-overdue-tasks">0</h4>
+                        <p class="text-secondary mb-0 small">Overdue</p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card-box bg-secondary bg-opacity-10 text-center px-1">
+                        <h4 class="fw-bold" id="stat-user-tasks">0</h4>
+                        <p class="text-secondary mb-0 small">My Tasks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="mb-4">My Projects</h3>
+            <div id="projects-list" class="row g-4">
+                <!-- Projects will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h3 class="mb-4">My Tasks</h3>
+            <div class="d-flex gap-3 mb-4">
+                <button class="btn btn-outline-light btn-sm" onclick="filterTasks('ALL')">All</button>
+                <button class="btn btn-outline-warning btn-sm" onclick="filterTasks('TODO')">To Do</button>
+                <button class="btn btn-outline-info btn-sm" onclick="filterTasks('IN_PROGRESS')">In Progress</button>
+                <button class="btn btn-outline-success btn-sm" onclick="filterTasks('DONE')">Done</button>
+            </div>
+            <div id="tasks-list" class="row g-4">
+                <!-- Tasks will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
