@@ -10,14 +10,12 @@ from .views import (
     TeamMemberDetailView
 )
 
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+from rest_framework_simplejwt.views import TokenRefreshView
+from .auth import CustomTokenObtainPairView
 
 urlpatterns = [
     path('register/', RegisterView.as_view()),
-    path('login/', TokenObtainPairView.as_view()),
+    path('login/', CustomTokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view()),
     path('users/', UserListView.as_view()),
 

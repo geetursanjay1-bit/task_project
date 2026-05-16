@@ -1,7 +1,9 @@
 [build]
 builder = "nixpacks"
-buildCommand = "cd backend && python manage.py collectstatic --noinput"
+buildCommand = "pip install -r backend/requirements.txt && cd backend && python manage.py collectstatic --noinput"
 
 [deploy]
-startCommand = "cd backend && python manage.py migrate && gunicorn team_manager.wsgi:application --bind 0.0.0.0:$PORT"
+startCommand = "cd backend && python manage.py migrate --noinput && gunicorn team_manager.wsgi:application --bind 0.0.0.0:$PORT"
 restartPolicyType = "ON_FAILURE"
+healthcheckPath = "/login.html"
+healthcheckTimeout = 120

@@ -13,8 +13,8 @@
     <div class="container-fluid dashboard-container my-0 py-0">
         <a class="navbar-brand text-gradient fw-bold" href="dashboard.html">Team Task Manager</a>
         <div class="d-flex gap-3">
-            <a href="create-project.html" class="btn btn-outline-light btn-sm">New Project</a>
-            <a href="create-task.html" class="btn btn-primary btn-sm">New Task</a>
+            <a href="create-project.html" id="nav-new-project" class="btn btn-outline-light btn-sm">New Project</a>
+            <a href="create-task.html" id="nav-new-task" class="btn btn-primary btn-sm" style="display:none;">New Task</a>
             <button class="btn btn-danger btn-sm" onclick="logout()">Logout</button>
         </div>
     </div>
@@ -25,52 +25,51 @@
         <div class="col-12">
             <h3 class="mb-4">Dashboard Statistics</h3>
             <div class="row g-4">
-                <div class="col-md-2">
+                <div class="col-md-2 col-6">
                     <div class="card-box bg-primary bg-opacity-10 text-center px-1">
                         <h4 class="fw-bold" id="stat-total-tasks">0</h4>
                         <p class="text-secondary mb-0 small">Total</p>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-6">
                     <div class="card-box bg-warning bg-opacity-10 text-center px-1">
                         <h4 class="fw-bold" id="stat-todo-tasks">0</h4>
                         <p class="text-secondary mb-0 small">To Do</p>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-6">
                     <div class="card-box bg-info bg-opacity-10 text-center px-1">
                         <h4 class="fw-bold" id="stat-inprogress-tasks">0</h4>
                         <p class="text-secondary mb-0 small">In Progress</p>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-6">
                     <div class="card-box bg-success bg-opacity-10 text-center px-1">
                         <h4 class="fw-bold" id="stat-done-tasks">0</h4>
                         <p class="text-secondary mb-0 small">Done</p>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-6">
                     <div class="card-box bg-danger bg-opacity-10 text-center px-1">
                         <h4 class="fw-bold" id="stat-overdue-tasks">0</h4>
                         <p class="text-secondary mb-0 small">Overdue</p>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="card-box bg-secondary bg-opacity-10 text-center px-1">
-                        <h4 class="fw-bold" id="stat-user-tasks">0</h4>
-                        <p class="text-secondary mb-0 small">My Tasks</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="row mb-5" id="tasks-per-user-section" style="display:none;">
+        <div class="col-12">
+            <h3 class="mb-4">Tasks Per User</h3>
+            <div id="tasks-per-user-list" class="row g-3"></div>
+        </div>
+    </div>
+
     <div class="row mb-5">
         <div class="col-12">
             <h3 class="mb-4">My Projects</h3>
-            <div id="projects-list" class="row g-4">
-                <!-- Projects will be loaded here -->
-            </div>
+            <div id="projects-list" class="row g-4"></div>
         </div>
     </div>
 
@@ -83,9 +82,7 @@
                 <button class="btn btn-outline-info btn-sm" onclick="filterTasks('IN_PROGRESS')">In Progress</button>
                 <button class="btn btn-outline-success btn-sm" onclick="filterTasks('DONE')">Done</button>
             </div>
-            <div id="tasks-list" class="row g-4">
-                <!-- Tasks will be loaded here -->
-            </div>
+            <div id="tasks-list" class="row g-4"></div>
         </div>
     </div>
 </div>
