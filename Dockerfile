@@ -17,6 +17,8 @@ ENV PYTHONUNBUFFERED=1
 ENV DEBUG=False
 
 RUN python manage.py collectstatic --noinput
+RUN chmod +x start.sh
 
-CMD python manage.py migrate --noinput && \
-    gunicorn team_manager.wsgi:application --bind 0.0.0.0:${PORT:-8000}
+EXPOSE 8000
+
+CMD ["./start.sh"]

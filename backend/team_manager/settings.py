@@ -31,11 +31,9 @@ CSRF_TRUSTED_ORIGINS = [
     if origin.strip()
 ]
 if RAILWAY_DOMAIN:
-    CSRF_TRUSTED_ORIGINS.append(f'https://{RAILWAY_DOMAIN}')
-
-RAILWAY_STATIC_URL = os.environ.get('RAILWAY_STATIC_URL')
-if RAILWAY_STATIC_URL:
-    CSRF_TRUSTED_ORIGINS.append(RAILWAY_STATIC_URL.rstrip('/'))
+    origin = f'https://{RAILWAY_DOMAIN}'
+    if origin not in CSRF_TRUSTED_ORIGINS:
+        CSRF_TRUSTED_ORIGINS.append(origin)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
